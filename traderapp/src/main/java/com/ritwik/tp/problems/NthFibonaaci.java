@@ -41,14 +41,14 @@ public class NthFibonaaci {
      */
     public static void main(final String[] args) {
         final NthFibonaaci fib = new NthFibonaaci();
-        System.out.println(fib.fibonaaci(-1));
-        System.out.println(fib.fibonaaci(null));
-        System.out.println(fib.fibonaaci(0));
-        System.out.println(fib.fibonaaci(1));
-        System.out.println(fib.fibonaaci(2));
-        System.out.println(fib.fibonaaci(5));
-        System.out.println(fib.fibonaaci(6));
-        System.out.println(fib.fibonaaci(10));
+        System.out.println("Input -1, fibonaaci = " + fib.fibonaaci(-1));
+        System.out.println("Input null, fibonaaci = " + fib.fibonaaci(null));
+        System.out.println("Input 0, fibonaaci = " + fib.fibonaaci(0));
+        System.out.println("Input 1, fibonaaci = " + fib.fibonaaci(1));
+        System.out.println("Input 2, fibonaaci = " + fib.fibonaaci(2));
+        System.out.println("Input 5, fibonaaci = " + fib.fibonaaci(5));
+        System.out.println("Input 6, fibonaaci = " + fib.fibonaaci(6));
+        System.out.println("Input 10, fibonaaci = " + fib.fibonaaci(10));
     }
 
 }
