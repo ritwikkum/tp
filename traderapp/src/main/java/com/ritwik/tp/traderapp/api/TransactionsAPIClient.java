@@ -14,11 +14,28 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class TransactionsAPIClient extends AbstractAPIClient {
+    private static TransactionsAPIClient instance;
+    private List<Transaction> transactions;
+
+    /**
+     *
+     * @return
+     */
+    public static TransactionsAPIClient getInstance() {
+        if (instance == null) {
+            synchronized (TradersAPIClient.class) {
+                if (instance == null) {
+                    instance = new TransactionsAPIClient();
+                }
+            }
+        }
+        return instance;
+    }
 
     /**
      *
      */
-    public TransactionsAPIClient() {
+    private TransactionsAPIClient() {
         super(BASE_URL + "transactions");
     }
 
@@ -28,17 +45,26 @@ public class TransactionsAPIClient extends AbstractAPIClient {
      *
      * @return
      */
-    public List<Transaction> getTransactionsList() {
+    private List<Transaction> fetchTransactionsList() {
         log.debug("getTransactionsList");
-        String transactionJson = null;
         try {
-            transactionJson = httpGetToAPI(apiEndpoint);
+            final String transactionJson = httpGetToAPI(apiEndpoint);
+            final List<Transaction> transactions =
+                    GSON.fromJson(transactionJson, new TypeToken<List<Transaction>>() {}.getType());
+            return transactions;
         } catch (final Exception exp) {
             log.error("Error in getTransactionsList", exp);
             return null;
         }
-        final List<Transaction> transactions =
-                GSON.fromJson(transactionJson, new TypeToken<List<Transaction>>() {}.getType());
+    }
+
+    /**
+     * @return the transactions
+     */
+    public List<Transaction> getTransactions() {
+        if (transactions == null) {
+            transactions = fetchTransactionsList();
+        }
         return transactions;
     }
 

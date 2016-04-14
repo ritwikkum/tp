@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.ritwik.tp.traderapp.api;
 
 import static com.ritwik.tp.traderapp.api.Constants.BASE_ENDPOINT_URL;

@@ -1,6 +1,4 @@
-/**
- * Copyright (c) 2015. InMobi, All Rights Reserved.
- */
+
 package com.ritwik.tp.problems;
 
 import java.util.ArrayList;

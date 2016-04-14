@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.ritwik.tp.traderapp.api;
 
@@ -16,22 +16,22 @@ import org.apache.http.client.ResponseHandler;
 
 /**
  * @author ritwik.kumar
- * 
+ *
  */
 public class StringResponseHandler implements ResponseHandler<String> {
 
-  @Override
-  public String handleResponse(final HttpResponse httpResp) throws ClientProtocolException, IOException {
-    final StatusLine statusLine = httpResp.getStatusLine();
-    final HttpEntity entity = httpResp.getEntity();
-    if (statusLine.getStatusCode() != HttpStatus.SC_OK) {
-      throw new HttpResponseException(statusLine.getStatusCode(), statusLine.getReasonPhrase());
-    }
-    if (entity == null) {
-      throw new ClientProtocolException("Response contains no content");
-    }
+    @Override
+    public String handleResponse(final HttpResponse httpResp) throws ClientProtocolException, IOException {
+        final StatusLine statusLine = httpResp.getStatusLine();
+        final HttpEntity entity = httpResp.getEntity();
+        if (statusLine.getStatusCode() != HttpStatus.SC_OK) {
+            throw new HttpResponseException(statusLine.getStatusCode(), statusLine.getReasonPhrase());
+        }
+        if (entity == null) {
+            throw new ClientProtocolException("Response contains no content");
+        }
 
-    return IOUtils.toString(entity.getContent());
-  }
+        return IOUtils.toString(entity.getContent());
+    }
 
 }

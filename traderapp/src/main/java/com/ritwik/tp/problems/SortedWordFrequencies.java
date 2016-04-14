@@ -1,6 +1,4 @@
-/**
- * Copyright (c) 2015. InMobi, All Rights Reserved.
- */
+
 package com.ritwik.tp.problems;
 
 import java.util.Arrays;
@@ -56,7 +54,7 @@ public class SortedWordFrequencies {
                 frequencyLookup.put(wordCount, wordsWithSameFreq);
             }
             wordsWithSameFreq.add(word);
-            // In above step Since the word went to another bucket, remove it from old bucket 
+            // In above step Since the word went to another bucket, remove it from old bucket
             if (wordCount > 1) {
                 frequencyLookup.get(wordCount - 1).remove(word);
             }

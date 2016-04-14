@@ -14,11 +14,28 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class TradersAPIClient extends AbstractAPIClient {
+    private static TradersAPIClient instance;
+    private List<Trader> traders;
+
+    /**
+     *
+     * @return
+     */
+    public static TradersAPIClient getInstance() {
+        if (instance == null) {
+            synchronized (TradersAPIClient.class) {
+                if (instance == null) {
+                    instance = new TradersAPIClient();
+                }
+            }
+        }
+        return instance;
+    }
 
     /**
      *
      */
-    public TradersAPIClient() {
+    private TradersAPIClient() {
         super(BASE_URL + "traders");
     }
 
@@ -28,17 +45,27 @@ public class TradersAPIClient extends AbstractAPIClient {
      *
      * @return
      */
-    public List<Trader> getTradersList() {
-        log.debug("getTradersList");
-        String traderListJson = null;
+    private List<Trader> fetchTradersList() {
+        log.debug("fetchTradersList");
         try {
-            traderListJson = httpGetToAPI(apiEndpoint);
+            final String traderListJson = httpGetToAPI(apiEndpoint);
             log.debug(traderListJson);
+            final List<Trader> traders = GSON.fromJson(traderListJson, new TypeToken<List<Trader>>() {}.getType());
+            return traders;
         } catch (final Exception exp) {
-            log.error("Error in getTradersList", exp);
+            log.error("Error in fetchTradersList", exp);
             return null;
         }
-        final List<Trader> traders = GSON.fromJson(traderListJson, new TypeToken<List<Trader>>() {}.getType());
+
+    }
+
+    /**
+     * @return the traders
+     */
+    public List<Trader> getTraders() {
+        if (traders == null) {
+            traders = fetchTradersList();
+        }
         return traders;
     }
 

@@ -1,12 +1,9 @@
-/**
- * Copyright (c) 2015. InMobi, All Rights Reserved.
- */
 package com.ritwik.tp.traderapp.api;
 
 /**
  * @author ritwik.kumar
- * 
- * This whole class would be replaced by a Config file in Prod Environment
+ *
+ *         This whole class would be replaced by a Config file in Prod Environment
  *
  */
 public class Constants {

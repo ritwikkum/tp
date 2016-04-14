@@ -5,13 +5,13 @@ import java.util.Arrays;
 /**
  *
  * @author ritwik.kumar
- * 
+ *
  *         Take an array of integers and partition it so that all the even integers in the array precede all the odd
  *         integers in the array. (bonus: Your solution must take linear time in the size of the array and operate
  *         in-place with only a constant amount of extra space.) <br>
  *         sample input : 2,4,7,6,1,3,5,4 <br>
  *         sample output : 2,4,6,4,7,1,3,5
- * 
+ *
  */
 public class EvenOddPartition {
 
