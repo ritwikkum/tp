@@ -1,4 +1,4 @@
-package com.goeuro.search.api.booking;
+package com.ritwik.tp.booking;
 
 import java.util.HashMap;
 import java.util.Map;
