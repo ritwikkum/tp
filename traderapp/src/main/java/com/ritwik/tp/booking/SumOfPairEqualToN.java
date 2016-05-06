@@ -49,8 +49,6 @@ public class SumOfPairEqualToN {
             }
         }
         System.out.println(toPrint);
-
-
     }
 
 }
